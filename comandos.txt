@@ -1,0 +1,15 @@
+docker compose rm -f api  # o: docker-compose rm -f api
+docker compose up -d --build
+docker compose logs -f api
+
+
+#ENCENDER
+docker compose up -d
+
+
+#APAGAR
+docker compose down
+
+
+#REINICIAR
+docker compose up -d --build
