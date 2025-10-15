@@ -898,7 +898,7 @@ app.delete('/ubicaciones/:ESCUELA_ID/:CENTRO_ID', async (req, res) => {
   } catch (e) { res.status(500).json({ error: e.message }); } finally { if (c) await c.close(); }
 });
 
-
+//  CONSULTA 1
 app.get('/consultas/1', async (_req, res) => {
   let c;
   try {
@@ -953,8 +953,7 @@ app.get('/consultas/1', async (_req, res) => {
 });
 
 
-// ====================== CONSULTA 2 ======================
-// GET /consultas/2  -> Ranking de evaluados
+//  CONSULTA 2 
 app.get('/consultas/2', async (_req, res) => {
   let c;
   try {
@@ -1012,7 +1011,6 @@ app.get('/consultas/2', async (_req, res) => {
 
 
 // ====================== CONSULTA 3 ======================
-// GET /consultas/3  -> Pregunta(s) con menor % de aciertos
 app.get('/consultas/3', async (_req, res) => {
   let c;
   try {
