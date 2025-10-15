@@ -21,9 +21,9 @@ services:
     environment:
       DB_USER: app
       DB_PASSWORD: app
-      DB_CONNECT_STRING: host.docker.internal:1521/XEPDB1   # ← usa el puerto del host (como DBeaver)
+      DB_CONNECT_STRING: host.docker.internal:1521/XEPDB1   
     extra_hosts:
-      - "host.docker.internal:host-gateway"                 # ← habilita ese hostname en Linux
+      - "host.docker.internal:host-gateway"                 
     ports:
       - "3000:3000"
     depends_on:

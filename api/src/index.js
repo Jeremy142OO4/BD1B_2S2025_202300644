@@ -40,7 +40,6 @@ app.post('/centros', async (req, res) => {
   if (ID_CENTRO == null || !NOMBRE) {
     return res.status(400).json({ error: 'ID_CENTRO y NOMBRE son requeridos' });
   }
-
   let c;
   try {
     c = await oracledb.getConnection(dbConfig);
@@ -899,5 +898,185 @@ app.delete('/ubicaciones/:ESCUELA_ID/:CENTRO_ID', async (req, res) => {
   } catch (e) { res.status(500).json({ error: e.message }); } finally { if (c) await c.close(); }
 });
 
+
+app.get('/consultas/1', async (_req, res) => {
+  let c;
+  try {
+    c = await oracledb.getConnection(dbConfig);
+    const sql = `
+      SELECT
+        c.NOMBRE                              AS "Centro",
+        eesc.NOMBRE                           AS "Escuela",
+        COUNT(es.ID_EXAMEN)                   AS "Total de exámenes",
+        ROUND(AVG(es.TEORICO), 2)             AS "Promedio teórico",
+        ROUND(AVG(es.PRACTICO), 2)            AS "Promedio práctico",
+        SUM(CASE WHEN es.TEORICO >= 70 AND es.PRACTICO >= 70 THEN 1 ELSE 0 END)
+                                              AS "Total aprobados"
+      FROM (
+        SELECT
+          e.ID_EXAMEN,
+          r.UBICACION_CENTRO_ID  AS CENTRO_ID,
+          r.UBICACION_ESCUELA_ID AS ESCUELA_ID,
+          NVL(t.TEORICO, 0)      AS TEORICO,
+          NVL(pr.PRACTICO, 0)    AS PRACTICO
+        FROM EXAMEN e
+        JOIN REGISTRO r
+          ON r.ID_REGISTRO = e.REGISTRO_ID
+        LEFT JOIN (
+          SELECT
+            e.ID_EXAMEN,
+            LEAST(100, 4 * SUM(CASE WHEN ru.RESPUESTA = p.RESPUESTA THEN 1 ELSE 0 END)) AS TEORICO
+          FROM EXAMEN e
+          LEFT JOIN RESPUESTA_USUARIO ru ON ru.EXAMEN_ID = e.ID_EXAMEN
+          LEFT JOIN PREGUNTAS p          ON p.ID = ru.PREGUNTA_ID
+          GROUP BY e.ID_EXAMEN
+        ) t ON t.ID_EXAMEN = e.ID_EXAMEN
+        LEFT JOIN (
+          SELECT
+            e.ID_EXAMEN,
+            LEAST(100, NVL(SUM(rpu.NOTA), 0)) AS PRACTICO
+          FROM EXAMEN e
+          LEFT JOIN RESPUESTA_PRACTICO_USUARIO rpu ON rpu.EXAMEN_ID = e.ID_EXAMEN
+          GROUP BY e.ID_EXAMEN
+        ) pr ON pr.ID_EXAMEN = e.ID_EXAMEN
+      ) es
+      JOIN CENTRO  c   ON c.ID_CENTRO   = es.CENTRO_ID
+      JOIN ESCUELA eesc ON eesc.ID_ESCUELA = es.ESCUELA_ID
+      GROUP BY c.NOMBRE, eesc.NOMBRE
+      ORDER BY c.NOMBRE, eesc.NOMBRE
+    `;
+    const r = await c.execute(sql, {}, { outFormat: oracledb.OBJECT });
+    res.json(r.rows || []);
+  } catch (e) {
+    res.status(500).json({ error: e.message });
+  } finally { if (c) await c.close(); }
+});
+
+
+// ====================== CONSULTA 2 ======================
+// GET /consultas/2  -> Ranking de evaluados
+app.get('/consultas/2', async (_req, res) => {
+  let c;
+  try {
+    c = await oracledb.getConnection(dbConfig);
+    const sql = `
+      SELECT
+        r.NOMBRE_COMPLETO                                       AS "Nombre completo",
+        r.TIPO_LICENCIA                                         AS "Tipo de licencia",
+        r.GENERO                                                AS "Género",
+        r.FECHA                                                 AS "Fecha",
+        NVL(t.TEORICO, 0)                                       AS "Punteo teórico",
+        NVL(pr.PRACTICO, 0)                                     AS "Punteo práctico",
+        NVL(t.TEORICO, 0) + NVL(pr.PRACTICO, 0)                 AS "Punteo total",
+        CASE
+          WHEN NVL(t.TEORICO, 0) >= 70 AND NVL(pr.PRACTICO, 0) >= 70
+            THEN 'APROBADO'
+          ELSE 'REPROBADO'
+        END                                                     AS "Resultado final",
+        (c2.NOMBRE || ' - ' || eesc.NOMBRE)                     AS "Ubicación"
+      FROM EXAMEN e
+      JOIN REGISTRO r
+        ON r.ID_REGISTRO = e.REGISTRO_ID
+      LEFT JOIN (
+        SELECT
+          e2.ID_EXAMEN,
+          LEAST(100, 4 * SUM(CASE WHEN ru.RESPUESTA = p.RESPUESTA THEN 1 ELSE 0 END)) AS TEORICO
+        FROM EXAMEN e2
+        LEFT JOIN RESPUESTA_USUARIO ru ON ru.EXAMEN_ID = e2.ID_EXAMEN
+        LEFT JOIN PREGUNTAS p          ON p.ID = ru.PREGUNTA_ID
+        GROUP BY e2.ID_EXAMEN
+      ) t ON t.ID_EXAMEN = e.ID_EXAMEN
+      LEFT JOIN (
+        SELECT
+          e3.ID_EXAMEN,
+          LEAST(100, NVL(SUM(rpu.NOTA), 0)) AS PRACTICO
+        FROM EXAMEN e3
+        LEFT JOIN RESPUESTA_PRACTICO_USUARIO rpu ON rpu.EXAMEN_ID = e3.ID_EXAMEN
+        GROUP BY e3.ID_EXAMEN
+      ) pr ON pr.ID_EXAMEN = e.ID_EXAMEN
+      JOIN CENTRO  c2
+        ON c2.ID_CENTRO   = r.UBICACION_CENTRO_ID
+      JOIN ESCUELA eesc
+        ON eesc.ID_ESCUELA = r.UBICACION_ESCUELA_ID
+      ORDER BY
+        CASE WHEN NVL(t.TEORICO, 0) >= 70 AND NVL(pr.PRACTICO, 0) >= 70 THEN 0 ELSE 1 END,
+        (NVL(t.TEORICO, 0) + NVL(pr.PRACTICO, 0)) DESC,
+        r.FECHA
+    `;
+    const r = await c.execute(sql, {}, { outFormat: oracledb.OBJECT });
+    res.json(r.rows || []);
+  } catch (e) {
+    res.status(500).json({ error: e.message });
+  } finally { if (c) await c.close(); }
+});
+
+
+// ====================== CONSULTA 3 ======================
+// GET /consultas/3  -> Pregunta(s) con menor % de aciertos
+app.get('/consultas/3', async (_req, res) => {
+  let c;
+  try {
+    c = await oracledb.getConnection(dbConfig);
+    const sql = `
+      WITH stats AS (
+        SELECT
+          p.ID                                  AS ID_PREGUNTA,
+          p.RES1, p.RES2, p.RES3, p.RES4,
+          p.RESPUESTA                           AS RESP_CORRECTA,
+          COUNT(ru.ID_RESPUESTA_USUARIO)        AS TOTAL_RESP,
+          SUM(CASE WHEN ru.RESPUESTA = p.RESPUESTA THEN 1 ELSE 0 END) AS CORRECTAS,
+          SUM(CASE WHEN ru.RESPUESTA = 1 THEN 1 ELSE 0 END) AS RESP_A,
+          SUM(CASE WHEN ru.RESPUESTA = 2 THEN 1 ELSE 0 END) AS RESP_B,
+          SUM(CASE WHEN ru.RESPUESTA = 3 THEN 1 ELSE 0 END) AS RESP_C,
+          SUM(CASE WHEN ru.RESPUESTA = 4 THEN 1 ELSE 0 END) AS RESP_D
+        FROM PREGUNTAS p
+        LEFT JOIN RESPUESTA_USUARIO ru
+          ON ru.PREGUNTA_ID = p.ID
+        GROUP BY p.ID, p.RES1, p.RES2, p.RES3, p.RES4, p.RESPUESTA
+      ),
+      scored AS (
+        SELECT
+          s.*,
+          CASE
+            WHEN s.TOTAL_RESP = 0 THEN 0
+            ELSE ROUND(100 * s.CORRECTAS / s.TOTAL_RESP, 2)
+          END AS PORC_ACIERTOS
+        FROM stats s
+      ),
+      ranked AS (
+        SELECT
+          s.*,
+          DENSE_RANK() OVER (ORDER BY s.PORC_ACIERTOS ASC) AS RK
+        FROM scored s
+      )
+      SELECT
+        ID_PREGUNTA                             AS "ID pregunta",
+        RES1                                    AS "Opción A",
+        RES2                                    AS "Opción B",
+        RES3                                    AS "Opción C",
+        RES4                                    AS "Opción D",
+        RESP_CORRECTA                           AS "Respuesta correcta (índice)",
+        RESP_A                                  AS "Respuestas A",
+        RESP_B                                  AS "Respuestas B",
+        RESP_C                                  AS "Respuestas C",
+        RESP_D                                  AS "Respuestas D",
+        TOTAL_RESP                              AS "Total respuestas",
+        CORRECTAS                               AS "Total aciertos",
+        PORC_ACIERTOS                           AS "Porcentaje de aciertos",
+        CASE
+          WHEN PORC_ACIERTOS < 40 THEN 'REVISIÓN URGENTE'
+          WHEN PORC_ACIERTOS < 60 THEN 'REVISAR'
+          ELSE 'OK'
+        END                                      AS "Estado de recomendación"
+      FROM ranked
+      WHERE RK = 1
+      ORDER BY PORC_ACIERTOS ASC, ID_PREGUNTA
+    `;
+    const r = await c.execute(sql, {}, { outFormat: oracledb.OBJECT });
+    res.json(r.rows || []);
+  } catch (e) {
+    res.status(500).json({ error: e.message });
+  } finally { if (c) await c.close(); }
+});
 
 app.listen(PORT, () => console.log(`API listening on :${PORT}`));
