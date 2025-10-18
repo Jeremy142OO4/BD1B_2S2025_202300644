@@ -8,7 +8,6 @@ services:
       ORACLE_PASSWORD: oracle
       APP_USER: app
       APP_USER_PASSWORD: app
-      ORACLE_DATABASE: XEPDB1
     volumes:
       - ./db/init:/container-entrypoint-initdb.d:ro
       - oracle_data:/opt/oracle/oradata
