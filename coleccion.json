@@ -1,0 +1,1449 @@
+{
+	"info": {
+		"_postman_id": "1d7f2ad2-d4a8-49d0-ae84-ab5f387d3bb3",
+		"name": "My Collection",
+		"description": "### Welcome to Postman! This is your first collection. \n\nCollections are your starting point for building and testing APIs. You can use this one to:\n\n• Group related requests\n• Test your API in real-world scenarios\n• Document and share your requests\n\nUpdate the name and overview whenever you’re ready to make it yours.\n\n[Learn more about Postman Collections.](https://learning.postman.com/docs/collections/collections-overview/)",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "48983251",
+		"_collection_link": "https://jeremy142oo4-336062.postman.co/workspace/Jeremy-Estuardo-Orellana-Aldana~aaa64255-b08d-4831-8712-f7c050949450/collection/48983251-1d7f2ad2-d4a8-49d0-ae84-ab5f387d3bb3?action=share&source=collection_link&creator=48983251"
+	},
+	"item": [
+		{
+			"name": "Centro",
+			"item": [
+				{
+					"name": "Ver todo",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{http://localhost:3000}}/centros",
+							"host": [
+								"{{http://localhost:3000}}"
+							],
+							"path": [
+								"centros"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Ver por ID",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{http://localhost:3000}}/centros/1",
+							"host": [
+								"{{http://localhost:3000}}"
+							],
+							"path": [
+								"centros",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Crear",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"ID_CENTRO\": 1,\n  \"NOMBRE\": \"Centro Zona 1\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{http://localhost:3000}}/api/centros",
+							"host": [
+								"{{http://localhost:3000}}"
+							],
+							"path": [
+								"api",
+								"centros"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Actualizar",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"NOMBRE\" : \"ejemplo\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{http://localhost:3000}}/api/centros/1",
+							"host": [
+								"{{http://localhost:3000}}"
+							],
+							"path": [
+								"api",
+								"centros",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Eliminar",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{http://localhost:3000}}/api/centros/1",
+							"host": [
+								"{{http://localhost:3000}}"
+							],
+							"path": [
+								"api",
+								"centros",
+								"1"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Correlativos",
+			"item": [
+				{
+					"name": "Ver todo",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{http://localhost:3000}}/correlativos",
+							"host": [
+								"{{http://localhost:3000}}"
+							],
+							"path": [
+								"correlativos"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Ver por ID",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{http://localhost:3000}}/correlativos/1",
+							"host": [
+								"{{http://localhost:3000}}"
+							],
+							"path": [
+								"correlativos",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Crear",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"ID_CORRELATIVO\": 1,\n  \"FECHA\": \"12/12/12\",\n  \"NO_EXAMEN\": \"1\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{http://localhost:3000}}/correlativos",
+							"host": [
+								"{{http://localhost:3000}}"
+							],
+							"path": [
+								"correlativos"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Actualizar",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"FECHA\": \"12/12/12\",\n    \"NO_EXAMEN\": \"2\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{http://localhost:3000}}/correlativos/1",
+							"host": [
+								"{{http://localhost:3000}}"
+							],
+							"path": [
+								"correlativos",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Eliminar",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{http://localhost:3000}}/correlativos/1",
+							"host": [
+								"{{http://localhost:3000}}"
+							],
+							"path": [
+								"correlativos",
+								"1"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Departamentos",
+			"item": [
+				{
+					"name": "Ver todo",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{http://localhost:3000}}/departamentos",
+							"host": [
+								"{{http://localhost:3000}}"
+							],
+							"path": [
+								"departamentos"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Ver por ID",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{http://localhost:3000}}/departamentos/1",
+							"host": [
+								"{{http://localhost:3000}}"
+							],
+							"path": [
+								"departamentos",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Crear",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"ID_DEPARTAMENTO\": 1,\n  \"NOMBRE\": \"Escuintla\",\n  \"CODIGO\": \"1\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{http://localhost:3000}}/departamentos",
+							"host": [
+								"{{http://localhost:3000}}"
+							],
+							"path": [
+								"departamentos"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Actualizar",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"NOMBRE\": \"Escuintla\",\n    \"CODIGO\": \"1\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{http://localhost:3000}}/departamentos/1",
+							"host": [
+								"{{http://localhost:3000}}"
+							],
+							"path": [
+								"departamentos",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Eliminar",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{http://localhost:3000}}/departamentos/1",
+							"host": [
+								"{{http://localhost:3000}}"
+							],
+							"path": [
+								"departamentos",
+								"1"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Escuela",
+			"item": [
+				{
+					"name": "Ver todo",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{http://localhost:3000}}/escuelas",
+							"host": [
+								"{{http://localhost:3000}}"
+							],
+							"path": [
+								"escuelas"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Ver por ID",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{http://localhost:3000}}/escuelas/1",
+							"host": [
+								"{{http://localhost:3000}}"
+							],
+							"path": [
+								"escuelas",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Crear",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"ID_ESCUELA\": 1,\n  \"NOMBRE\": \"San Martin\",\n  \"DIRECCION\": \"4 Avenida\",\n  \"ACUERDO\": \"1\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{http://localhost:3000}}/escuelas",
+							"host": [
+								"{{http://localhost:3000}}"
+							],
+							"path": [
+								"escuelas"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Actualizar",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"NOMBRE\": \"San Martin\",\n    \"DIRECCION\": \"5 Avenida\",\n    \"ACUERDO\": \"1\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{http://localhost:3000}}/escuelas/1",
+							"host": [
+								"{{http://localhost:3000}}"
+							],
+							"path": [
+								"escuelas",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Eliminar",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{http://localhost:3000}}/escuelas/1",
+							"host": [
+								"{{http://localhost:3000}}"
+							],
+							"path": [
+								"escuelas",
+								"1"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Examen",
+			"item": [
+				{
+					"name": "Ver todo",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{http://localhost:3000}}/examenes",
+							"host": [
+								"{{http://localhost:3000}}"
+							],
+							"path": [
+								"examenes"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Ver por ID",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{http://localhost:3000}}/examenes/1",
+							"host": [
+								"{{http://localhost:3000}}"
+							],
+							"path": [
+								"examenes",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Crear",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"ID_EXAMEN\": 1,\n  \"REGISTRO_ID_ESCUELA\": 1,\n  \"REGISTRO_ID_CENTRO\": 1,\n  \"REGISTRO_MUNICIPIO_ID\": 1,\n  \"REGISTRO_MUNICIPIO_DEPARTAMENTO_ID\": 1,\n  \"REGISTRO_ID\": 1,\n  \"CORRELATIVO_ID\": 1\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{http://localhost:3000}}/examenes",
+							"host": [
+								"{{http://localhost:3000}}"
+							],
+							"path": [
+								"examenes"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Actualizar",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"REGISTRO_ID_ESCUELA\": 1,\n  \"REGISTRO_ID_CENTRO\": 1,\n  \"REGISTRO_MUNICIPIO_ID\": 1,\n  \"REGISTRO_MUNICIPIO_DEPARTAMENTO_ID\": 1,\n  \"REGISTRO_ID\": 1,\n  \"CORRELATIVO_ID\": 1\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{http://localhost:3000}}/examenes/1",
+							"host": [
+								"{{http://localhost:3000}}"
+							],
+							"path": [
+								"examenes",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Eliminar",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{http://localhost:3000}}/examenes/1",
+							"host": [
+								"{{http://localhost:3000}}"
+							],
+							"path": [
+								"examenes",
+								"1"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Municipios",
+			"item": [
+				{
+					"name": "Ver todo",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{http://localhost:3000}}/municipios",
+							"host": [
+								"{{http://localhost:3000}}"
+							],
+							"path": [
+								"municipios"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Ver por ID",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{http://localhost:3000}}/municipios/1",
+							"host": [
+								"{{http://localhost:3000}}"
+							],
+							"path": [
+								"municipios",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Crear",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"ID_MUNICIPIO\": 1,\n  \"DEPARTAMENTO_ID\": 1,\n  \"NOMBRE\": \"Escuintla\",\n  \"CODIGO\": \"1\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{http://localhost:3000}}/municipios",
+							"host": [
+								"{{http://localhost:3000}}"
+							],
+							"path": [
+								"municipios"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Actualizar",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"DEPARTAMENTO_ID\": 1,\n  \"NOMBRE\": \"Escuintla\",\n  \"CODIGO\": \"1\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{http://localhost:3000}}/municipios/1",
+							"host": [
+								"{{http://localhost:3000}}"
+							],
+							"path": [
+								"municipios",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Eliminar",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{http://localhost:3000}}/municipios/1",
+							"host": [
+								"{{http://localhost:3000}}"
+							],
+							"path": [
+								"municipios",
+								"1"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Preguntas",
+			"item": [
+				{
+					"name": "Ver todo",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{http://localhost:3000}}/preguntas",
+							"host": [
+								"{{http://localhost:3000}}"
+							],
+							"path": [
+								"preguntas"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Ver por ID",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{http://localhost:3000}}/preguntas/1",
+							"host": [
+								"{{http://localhost:3000}}"
+							],
+							"path": [
+								"preguntas",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Crear",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"ID\": 1,\n  \"PREGUNTA_TEXTO\": \"Pregunta\",\n  \"RESPUESTA\": 1,\n  \"RES1\": \"Respuesta1\",\n  \"RES2\": \"Respuesta2\",\n  \"RES3\": \"Respuesta3\",\n  \"RES4\": \"Respuesta4\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{http://localhost:3000}}/preguntas",
+							"host": [
+								"{{http://localhost:3000}}"
+							],
+							"path": [
+								"preguntas"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Actualizar",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"PREGUNTA_TEXTO\": \"Pregunta\",\n  \"RESPUESTA\": \"1\",\n  \"RES1\": \"Respuesta1\",\n  \"RES2\": \"Respuesta2\",\n  \"RES3\": \"Respuesta3\",\n  \"RES4\": \"Respuesta4\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{http://localhost:3000}}/preguntas/1",
+							"host": [
+								"{{http://localhost:3000}}"
+							],
+							"path": [
+								"preguntas",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Eliminar",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{http://localhost:3000}}/preguntas/1",
+							"host": [
+								"{{http://localhost:3000}}"
+							],
+							"path": [
+								"preguntas",
+								"1"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Preguntas Practico",
+			"item": [
+				{
+					"name": "Ver todo",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{http://localhost:3000}}/preguntas_practico",
+							"host": [
+								"{{http://localhost:3000}}"
+							],
+							"path": [
+								"preguntas_practico"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Ver por ID",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{http://localhost:3000}}/preguntas_practico/1",
+							"host": [
+								"{{http://localhost:3000}}"
+							],
+							"path": [
+								"preguntas_practico",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Crear",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"ID_PREGUNTA_PRACTICO\": 1,\n  \"PREGUNTA_TEXTO\": \"Pregunta\",\n  \"PUNTEO\": 10\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{http://localhost:3000}}/preguntas_practico",
+							"host": [
+								"{{http://localhost:3000}}"
+							],
+							"path": [
+								"preguntas_practico"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Actualizar",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"PREGUNTA_TEXTO\": \"Pregunta\",\n  \"PUNTEO\": 10\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{http://localhost:3000}}/preguntas_practico/1",
+							"host": [
+								"{{http://localhost:3000}}"
+							],
+							"path": [
+								"preguntas_practico",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Eliminar",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{http://localhost:3000}}/preguntas_practico/1",
+							"host": [
+								"{{http://localhost:3000}}"
+							],
+							"path": [
+								"preguntas_practico",
+								"1"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Registro",
+			"item": [
+				{
+					"name": "Ver todo",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{http://localhost:3000}}/registros",
+							"host": [
+								"{{http://localhost:3000}}"
+							],
+							"path": [
+								"registros"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Ver por ID",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{http://localhost:3000}}/registros/1",
+							"host": [
+								"{{http://localhost:3000}}"
+							],
+							"path": [
+								"registros",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Crear",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"ID_REGISTRO\": 1,\n  \"UBICACION_ESCUELA_ID\": 1,\n  \"UBICACION_CENTRO_ID\": 1,\n  \"MUNICIPIO_ID\": 1,\n  \"MUNICIPIO_DEPARTAMENTO_ID\": 1,\n  \"FECHA\": \"12/12/12\",\n  \"TIPO_TRAMITE\": \"Sacar licencia\",\n  \"TIPO_LICENCIA\": \"Sacar licencia\",\n  \"NOMBRE_COMPLETO\": \"Sacar licencia\",\n  \"GENERO\": \"Sacar licencia\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{http://localhost:3000}}/registros",
+							"host": [
+								"{{http://localhost:3000}}"
+							],
+							"path": [
+								"registros"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Actualizar",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"UBICACION_ESCUELA_ID\": 1,\n  \"UBICACION_CENTRO_ID\": 1,\n  \"MUNICIPIO_ID\": 1,\n  \"MUNICIPIO_DEPARTAMENTO_ID\": 1,\n  \"FECHA\": \"12/12/12\",\n  \"TIPO_TRAMITE\": \"Sacar licencia\",\n  \"TIPO_LICENCIA\": \"Sacar licencia\",\n  \"NOMBRE_COMPLETO\": \"Sacar licencia\",\n  \"GENERO\": \"Sacar licencia\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{http://localhost:3000}}/registros/1",
+							"host": [
+								"{{http://localhost:3000}}"
+							],
+							"path": [
+								"registros",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Eliminar",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{http://localhost:3000}}/registros/1",
+							"host": [
+								"{{http://localhost:3000}}"
+							],
+							"path": [
+								"registros",
+								"1"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Respuestas Practico Usuario",
+			"item": [
+				{
+					"name": "Ver todo",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{http://localhost:3000}}/respuestas_practico_usuario",
+							"host": [
+								"{{http://localhost:3000}}"
+							],
+							"path": [
+								"respuestas_practico_usuario"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Ver por ID",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{http://localhost:3000}}/respuestas_practico_usuario/1",
+							"host": [
+								"{{http://localhost:3000}}"
+							],
+							"path": [
+								"respuestas_practico_usuario",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Crear",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"ID_RESPUESTA_PRACTICO\": 1,\n  \"PREGUNTA_PRACTICO_ID\": 1,\n  \"EXAMEN_ID\": 1,\n  \"NOTA\": 1\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{http://localhost:3000}}/respuestas_practico_usuario",
+							"host": [
+								"{{http://localhost:3000}}"
+							],
+							"path": [
+								"respuestas_practico_usuario"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Actualizar",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"PREGUNTA_PRACTICO_ID\": 1,\n  \"EXAMEN_ID\": 1,\n  \"NOTA\": 1\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{http://localhost:3000}}/respuestas_practico_usuario/1",
+							"host": [
+								"{{http://localhost:3000}}"
+							],
+							"path": [
+								"respuestas_practico_usuario",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Eliminar",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{http://localhost:3000}}/respuestas_practico_usuario/1",
+							"host": [
+								"{{http://localhost:3000}}"
+							],
+							"path": [
+								"respuestas_practico_usuario",
+								"1"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Respuesta Usuario",
+			"item": [
+				{
+					"name": "Ver todo",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{http://localhost:3000}}/respuestas_usuario",
+							"host": [
+								"{{http://localhost:3000}}"
+							],
+							"path": [
+								"respuestas_usuario"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Ver por ID",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{http://localhost:3000}}/respuestas_usuario/1",
+							"host": [
+								"{{http://localhost:3000}}"
+							],
+							"path": [
+								"respuestas_usuario",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Crear",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"ID_RESPUESTA_USUARIO\": 1,\n  \"PREGUNTA_ID\": 1,\n  \"EXAMEN_ID\": 1,\n  \"RESPUESTA\": 1\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{http://localhost:3000}}/respuestas_usuario",
+							"host": [
+								"{{http://localhost:3000}}"
+							],
+							"path": [
+								"respuestas_usuario"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Actualizar",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"PREGUNTA_ID\": 1,\n  \"EXAMEN_ID\": 1,\n  \"RESPUESTA\": 1\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{http://localhost:3000}}/respuestas_usuario/1",
+							"host": [
+								"{{http://localhost:3000}}"
+							],
+							"path": [
+								"respuestas_usuario",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Eliminar",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{http://localhost:3000}}/respuestas_usuario/1",
+							"host": [
+								"{{http://localhost:3000}}"
+							],
+							"path": [
+								"respuestas_usuario",
+								"1"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Ubicacion",
+			"item": [
+				{
+					"name": "Ver todo",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{http://localhost:3000}}/ubicaciones",
+							"host": [
+								"{{http://localhost:3000}}"
+							],
+							"path": [
+								"ubicaciones"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Ver por ID",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{http://localhost:3000}}/ubicaciones/1/1",
+							"host": [
+								"{{http://localhost:3000}}"
+							],
+							"path": [
+								"ubicaciones",
+								"1",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Crear",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"ESCUELA_ID\": 1,\n  \"CENTRO_ID\": 1\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{http://localhost:3000}}/ubicaciones",
+							"host": [
+								"{{http://localhost:3000}}"
+							],
+							"path": [
+								"ubicaciones"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Actualizar",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"ESCUELA_ID\": 1,\n  \"CENTRO_ID\": 1\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{http://localhost:3000}}/ubicaciones/5/2",
+							"host": [
+								"{{http://localhost:3000}}"
+							],
+							"path": [
+								"ubicaciones",
+								"5",
+								"2"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Eliminar",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{http://localhost:3000}}/ubicaciones/1/1",
+							"host": [
+								"{{http://localhost:3000}}"
+							],
+							"path": [
+								"ubicaciones",
+								"1",
+								"1"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Consultas",
+			"item": [
+				{
+					"name": "Consulta1",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{http://localhost:3000}}/consultas/1",
+							"host": [
+								"{{http://localhost:3000}}"
+							],
+							"path": [
+								"consultas",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Consulta2",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{http://localhost:3000}}/consultas/2",
+							"host": [
+								"{{http://localhost:3000}}"
+							],
+							"path": [
+								"consultas",
+								"2"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Consulta3",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{http://localhost:3000}}/consultas/3",
+							"host": [
+								"{{http://localhost:3000}}"
+							],
+							"path": [
+								"consultas",
+								"3"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Prueba conexion",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {},
+						"requests": {}
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{http://localhost:3000}}/ping",
+					"host": [
+						"{{http://localhost:3000}}"
+					],
+					"path": [
+						"ping"
+					]
+				},
+				"description": "This is a GET request and it is used to \"get\" data from an endpoint. There is no request body for a GET request, but you can use query parameters to help specify the resource you want data on (e.g., in this request, we have `id=1`).\n\nA successful GET response will have a `200 OK` status, and should include some kind of response body - for example, HTML web content or JSON data."
+			},
+			"response": []
+		}
+	],
+	"variable": [
+		{
+			"key": "http://localhost:3000",
+			"value": "",
+			"type": "default"
+		}
+	]
+}
